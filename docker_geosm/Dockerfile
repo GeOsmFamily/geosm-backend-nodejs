@@ -33,17 +33,17 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 
 RUN rm -rf /var/www/GeoOSM_Backend/ || true
-RUN git clone https://github.com/GeOsm-Africa/geosm-backend.git GeoOSM_Backend
+RUN git clone https://github.com/GeOsm-Africa/geosm-backend.git ./GeoOSM_Backend
 RUN cd /var/www/GeoOSM_Backend/ && composer install
 
 
 
 RUN rm -rf /var/www/GeoOSM_Frontend/ || true
-RUN git clone https://github.com/GeOsm-Africa/geosm.git GeoOSM_Frontend
+RUN git clone https://github.com/GeOsm-Africa/geosm.git ./GeoOSM_Frontend
 RUN cd /var/www/GeoOSM_Frontend/ && npm install
 
 RUN rm -rf /var/www/backend_nodejs/ || true
-RUN git clone https://github.com/GeOsm-Africa/geosm-backend-nodejs.git backend_nodejs
+RUN git clone https://github.com/GeOsm-Africa/geosm-backend-nodejs.git ./backend_nodejs
 RUN cp /var/www/backend_nodejs/docker/boot.sh /var/www/
 RUN rm -rf /var/www/backend_nodejs/ || true
 

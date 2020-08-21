@@ -68,7 +68,7 @@ echo "====== CREATION DES REPERTOIRE POUR QGIS SERVEUR TERMINE ======"
 echo "====== TELECHARGEMENT DES STYLES PAR DEFAUT DE GEOSM ======"
 
 rm -rf  ./backend_nodejs_temp
-git clone https://github.com/GeoOSM/backend_nodejs/ ./backend_nodejs_temp
+git clone https://github.com/GeOsm-Africa/geosm-backend-nodejs.git ./backend_nodejs_temp
 cp ./backend_nodejs_temp/python_script/style_default/*.qml $geosm_dir$db/style/
 rm -rf  ./backend_nodejs_temp
 
@@ -87,15 +87,15 @@ mkdir -m 777 -p $path_projet/docker/public/assets/admin/images
 mkdir -m 777 -p $path_projet/docker/client/
 
 rm -rf  ./GeoOSM_Backend
-git clone https://github.com/GeoOSM/GeoOSM_Backend/
-mv ./GeoOSM_Backend/projet_laravel/.env.exemple $path_projet/docker/public/.env.exemple
-mv ./GeoOSM_Backend/projet_laravel/public/assets/config_template.js $path_projet/docker/public/assets/config_template.js
-mv ./GeoOSM_Backend/projet_laravel/public/assets/images $path_projet/docker/public/assets/
-mv ./GeoOSM_Backend/projet_laravel/public/assets/admin/images $path_projet/docker/public/assets/admin/
+git clone https://github.com/GeOsm-Africa/geosm-backend.git ./GeoOSM_Backend
+mv ./GeoOSM_Backend/.env.exemple $path_projet/docker/public/.env.exemple
+mv ./GeoOSM_Backend/public/assets/config_template.js $path_projet/docker/public/assets/config_template.js
+mv ./GeoOSM_Backend/public/assets/images $path_projet/docker/public/assets/
+mv ./GeoOSM_Backend/public/assets/admin/images $path_projet/docker/public/assets/admin/
 rm -rf  ./GeoOSM_Backend
 
 rm -rf  ./GeoOSM_Frontend
-git clone -b dev https://github.com/GeoOSM/GeoOSM_Frontend/
+git clone https://github.com/GeOsm-Africa/geosm.git ./GeoOSM_Frontend
 mv ./GeoOSM_Frontend/src/assets/ $path_projet/docker/client/
 mv ./GeoOSM_Frontend/src/environments/ $path_projet/docker/client/environments/
 cp $path_projet/docker/client/environments/environment-exemple.ts $path_projet/docker/client/environments/environment.ts

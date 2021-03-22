@@ -68,7 +68,7 @@ echo "====== CREATION DES REPERTOIRE POUR QGIS SERVEUR TERMINE ======"
 echo "====== TELECHARGEMENT DES STYLES PAR DEFAUT DE GEOSM ======"
 
 rm -rf  ./backend_nodejs_temp
-git clone https://github.com/GeOsm-Africa/geosm-backend-nodejs.git ./backend_nodejs_temp
+git clone https://github.com/GeOsmFamily/geosm-backend-nodejs.git/ ./backend_nodejs_temp
 cp ./backend_nodejs_temp/python_script/style_default/*.qml $geosm_dir$db/style/
 rm -rf  ./backend_nodejs_temp
 
@@ -87,18 +87,18 @@ mkdir -m 777 -p $path_projet/docker/public/assets/admin/images
 mkdir -m 777 -p $path_projet/docker/client/
 
 rm -rf  ./GeoOSM_Backend
-git clone https://github.com/GeOsm-Africa/geosm-backend.git ./GeoOSM_Backend
-mv ./GeoOSM_Backend/.env.exemple $path_projet/docker/public/.env.exemple
+git clone -b v7.2 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
+mv ./GeoOSM_Backend/.env.example $path_projet/docker/public/.env.example
 mv ./GeoOSM_Backend/public/assets/config_template.js $path_projet/docker/public/assets/config_template.js
 mv ./GeoOSM_Backend/public/assets/images $path_projet/docker/public/assets/
 mv ./GeoOSM_Backend/public/assets/admin/images $path_projet/docker/public/assets/admin/
 rm -rf  ./GeoOSM_Backend
 
 rm -rf  ./GeoOSM_Frontend
-git clone https://github.com/GeOsm-Africa/geosm.git ./GeoOSM_Frontend
+git clone https://github.com/GeOsmFamily/geosm-frontend.git ./GeoOSM_Frontend
 mv ./GeoOSM_Frontend/src/assets/ $path_projet/docker/client/
 mv ./GeoOSM_Frontend/src/environments/ $path_projet/docker/client/environments/
-cp $path_projet/docker/client/environments/environment-exemple.ts $path_projet/docker/client/environments/environment.ts
+cp $path_projet/docker/client/environments/environment-example.ts $path_projet/docker/client/environments/environment.ts
 sed -i "s+'path_qgis_value'+"'"'${geosm_dir}'"'"+g" $path_projet/docker/client/environments/environment.ts
 sed -i "s/'pojet_nodejs_value'/"'"'${db}'"'"/g" $path_projet/docker/client/environments/environment.ts
 chmod -R 755 $path_projet/docker/
@@ -116,11 +116,11 @@ echo "Fichier de configuration pour NODE js crée"
 
 cp $path_projet"/docker/public/assets/config_template.js" $path_projet"/docker/public/assets/config.js" 
 
-jq -n  --arg rootApp "/var/www/GeoOSM_Backend/projet_laravel/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
+jq -n  --arg rootApp "/var/www/GeoOSM_Backend/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg urlBackend "http://admin"$db".geosm.org/" --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
 
 sed  -i '1i var config_projet =' $path_projet"/docker/public/assets/config.js"
 
-cp $path_projet"/docker/public/.env.exemple" $path_projet"/docker/public/.env"
+cp $path_projet"/docker/public/.env.example" $path_projet"/docker/public/.env"
 sed -i 's/database_username/'${user_bd}'/g' $path_projet"/docker/public/.env"
 sed -i 's/database_password/'${pass_bd}'/g' $path_projet"/docker/public/.env"
 sed -i 's/database_name/'${db}'/g' $path_projet"/docker/public/.env"

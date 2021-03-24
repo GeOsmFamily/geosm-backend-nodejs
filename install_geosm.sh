@@ -9,8 +9,6 @@ sudo chown -R postgres:postgres /var/www/
 chmod +x ./create_project.sh
 dos2unix ./create_project.sh
 su - postgres
-cd /var/www/backend_nodejs
-./create_project.sh
 
 echo "====== Création du projet Terminée ======"
 

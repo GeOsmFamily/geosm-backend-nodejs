@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    ServerAdmin nelsontayou1@gmail.com
+    ServerName server_name
+    ServerAlias server_name
+
+    DocumentRoot  "/var/www/"
+    ProxyPass "/"  "http://localhost:port/" acquire=3000 timeout=1200 Keepalive=On
+    ProxyPassReverse "/" "http://localhost:port/"
+
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>

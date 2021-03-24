@@ -1,12 +1,13 @@
 {
-    "roi": "/var/www/GeoOSM_Backend/mali.shp",
-    "path_pbf":"http://download.geofabrik.de/africa/mali-latest.osm.pbf",
-    "urlNodejs_backend":"http: //servicetest.geocameroun.xyz/",
-    "path_projet":"/var/www/civ_temp/",
-    "geosm_dir":"/var/www/geosm/",
-    "db":"civ_temp",
-    "user_bd":"postgres",
-    "pass_bd":"postgres237",
-    "port_bd":5432
-    
+    "roi": "/var/www/backend_nodejs/shp/cameroun/CMR_adm0.shp",
+    "path_pbf": "http://download.geofabrik.de/africa/cameroon-latest.osm.pbf",
+    "urlNodejs_backend": "https://service.geosm.org/",
+    "path_projet": "/var/www/demo",
+    "geosm_dir": "/var/www/geosm/",
+    "lang": "fr",
+    "db": "demo",
+    "user_bd": "postgres",
+    "pass_bd": "postgresgeosm",
+    "port_bd": 5432
+
 }

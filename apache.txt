@@ -4,8 +4,8 @@
     ServerAlias server_name
 
     DocumentRoot  "/var/www/"
-    ProxyPass "/"  "http://localhost:port/" acquire=3000 timeout=1200 Keepalive=On
-    ProxyPassReverse "/" "http://localhost:port/"
+    ProxyPass "/"  "port/" acquire=3000 timeout=1200 Keepalive=On
+    ProxyPassReverse "/" "port/"
 
 
     ErrorLog ${APACHE_LOG_DIR}/error.log

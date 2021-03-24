@@ -1,8 +1,8 @@
 version: "3"
 services:
-  abidjan:
-    image: geosm_ville
-    container_name: geosm_abidjan
+  nom_instance:
+    image: nom_image
+    container_name: nom_container
     restart: unless-stopped
     tty: true
     volumes:
@@ -26,6 +26,6 @@ services:
       DEFAULT_ROOT: "/"
       WEB_ROOT: /var/www/GeoOSM_Frontend/dist/
     ports:
-      - 1004:8060
-      - 1005:8070
+      - port_backend:8060
+      - port_frontend:8070
 

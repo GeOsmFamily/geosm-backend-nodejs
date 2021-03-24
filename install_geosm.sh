@@ -12,7 +12,6 @@ su - postgres
 
 echo "====== Création du projet Terminée ======"
 
-exit
 
 
 echo "====== Configuration du Fichier environement ======"

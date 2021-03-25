@@ -37,7 +37,7 @@ On appellera ce nom de domaine par la suite **www.backend_nodejs.geoosm**
 ## Création des images DOCKER
 
 ```
-$ cd docker_geosm
+$ cd /var/www/backend_nodejs/docker_geosm
 $ docker build --no-cache  -t geosm .
 ```
 ## Créer une instance geosm
@@ -51,6 +51,7 @@ $ docker build --no-cache  -t geosm .
 | urlNodejs_backend | link of backend geosm  (**www.backend_nodejs.geoosm**)  already install in your computer |
 | path_projet | empty or not existing path where you want to deploy geosm in your computer |
 | geosm_dir | empty or not existing path where you want to store geopackages files for qgis server to read them; This path can take multiple projects ! |
+| lang | french or english |
 | db | name of database |
 | user_bd | user of Database |
 | pass_bd | password of Database |
@@ -60,76 +61,17 @@ $ docker build --no-cache  -t geosm .
 
 ```sh
 $ sudo chown -R postgres:postgres /var/www/
-$ chmod +x ./create_project.sh
-$ dos2unix ./create_project.sh
-$ su - postgres
-$ ./create_project.sh
+$ chmod +x ./install_geosm.sh
+$ dos2unix ./install_geosm.sh
+$ ./install_geosm.sh
+$ exit
 
 ```
-
-##### 3. Configurer docker pour l'administration et le portail public
-
-
-###### Editer le fichier environment.ts et color.scss
-Dans le dossier <path_projet>/docker/client/environments/ <path_projet> du new_project_config.json de l'étape 1:
-- Editer le fichier environment.ts
-
-| variable | valeur attendue |
-| ------ | ------ |
-| url_prefix | url of administration (In local you can put http://localost:8060 to your file docker-compose.yml)  |
-| url_frontend | url of portail (In local you can put http://localost:8070 according to your file docker-compose.yml ) |
-| global_logo | empty or the path for the icon in https://github.com/GeoOSM/GeoOSM_Frontend/tree/dev/src/assets/images/Pays (eg. assets/images/Pays/ OUGANDA.svg) |
-| drapeau | empty or path to a flag |
-| nom | empy or the name of the project that will be show in the portail |
-| indicatif_pays | indicatif of country for Nominatim search |
-| primaryColor | color of portail (hex,rgb,rgba|
-| default_language | fr or en |
-| projetOsmCm | true or false |
-
-- Editer le fichier color.scss avec la meme coucleur que celle mise à primaryColor
-
-###### Pour le thème Ville,Editer le fichier .env
-NB : Si vous faite le thème classique (pays), vous pouvez passer cette étape
-
-Dans le dossier <path_projet>/docker/public/ <path_projet> du new_project_config.json de l'étape 1:
-- Editer le fichier .env
-
-| variable | valeur attendue |
-| ------ | ------ |
-| intersection | true |
-
-###### Editer le fichier docker-compose.yml
-Dans le dossier <path_projet>/
-
-dans le fichier docker-compose.yml:
-
-Modifier les valeurs:
-- services_name : service_<nom_pays>
-- container_name: geosm_<nom_pays>
-Editer les ports:
-- 8060 -> Pour l'administration
-- 8070 -> Pour le portail
-
-Seulement pour le thème ville:
-- image: geosm_ville
+##### Suivre les configurations demandées dans le terminal
+PS: -Remplir les ports et les noter quelque part afin d'éviter les erreurs docker plutard
+- Le code ISO du pays à remplir est le code ISO 3166
 
 
-###### construire l'image docker
-
-```
-$ chmod -R 777 <path_projet>/docker
-$ cd <path_projet>/docker
-$ docker-compose up -d
-$ docker  exec -i -t ""container_name""   /var/www/boot.sh
-```
-##### 4. Créer les couches avec leurs styles par defaut :
-
-```sh
-    # generer toutes les couches #
-$ docker exec -ti geosm_carto npm run initialiser_projet --projet=<name of database of project>
-    # Appliquer les styles par défaut à toutes les couches #
-$ docker exec -ti geosm_carto npm run apply_style_projet --projet=<name of database of project>
-```
 
 ## Pour mettre à jour la BD OSM
 ```sh

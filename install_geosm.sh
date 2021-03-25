@@ -68,6 +68,11 @@ docker  exec -i -t "${new_nom_container}"   /var/www/boot.sh
 
 echo "====== Deploiement Terminé ======"
 
+echo "====== Suppression des fichiers QGS ======"
+cd /var/www/geosm/$db/
+rm -r *.qgs
+cd $path_project/docker
+
 echo "====== Création des couches ======"
 docker exec -ti geosm_carto npm run initialiser_projet --projet=${db}
 docker exec -ti geosm_carto npm run apply_style_projet --projet=${db}

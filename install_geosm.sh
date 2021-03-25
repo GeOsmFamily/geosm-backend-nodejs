@@ -21,7 +21,7 @@ new_url_backend="admin${db}.geo.sm"
 new_url_frontend="${db}.geo.sm"
 echo $new_url_backend
 sed -i "s+url_backend+https://$new_url_backend+g" environment.ts
-sed -i "s+url_frontend+https://$new_url_frontend+g" environment.ts
+sed -i "s+urlFrontend+https://$new_url_frontend+g" environment.ts
 echo "====== Nom de l'instance ======"
 read new_nom_instance
 echo $new_nom_instance
@@ -30,7 +30,11 @@ sed -i "s/langue/$lang/g" environment.ts
 
 echo "====== Url du drapeau en png ======"
 read new_url_drapeau
-sed -i "s/url_flag/$new_url_drapeau/g" environment.ts
+sed -i "s+url_flag+$new_url_drapeau+g" environment.ts
+
+echo "====== Code ISO du pays ======"
+read new_country_code
+sed -i "s+code_country+$new_country_code+g" environment.ts
 
 echo "====== Configuration du Fichier environement Terminée ======"
 
@@ -42,8 +46,11 @@ sed -i "s/nom_instance/$nom_instance_docker/g" docker-compose.yml
 echo "====== Nom de l'image Docker à utiliser ======"
 read nom_image_docker
 sed -i "s/nom_image/${nom_image_docker,,}/g" docker-compose.yml
-new_nom_container = "geosm_"${nom_image_docker,,}
+new_nom_container="geosm_${nom_instance_docker,,}"
+cat docker-compose.yml
+echo $new_nom_container
 sed -i "s/nom_container/${new_nom_container,,}/g" docker-compose.yml
+cat docker-compose.yml
 echo "====== Nom du Port Backend ======"
 read new_port_backend
 sed -i "s/port_backend/$new_port_backend/g" docker-compose.yml
@@ -72,15 +79,15 @@ echo "====== Configuration Apache Frontend ======"
 cp "/var/www/backend_nodejs/apache.txt" "/etc/apache2/sites-available/${new_url_frontend,,}.conf"
 localhost="http://localhost"
 cd /etc/apache2/sites-available/
-sed -i "s/server_name/${new_url_frontend,,}/g" ${new_url_frontend,,}.conf
-sed -i "s/port/$localhost:$new_port_frontend/g" ${new_url_frontend,,}.conf
+sed -i "s/server_name/${new_url_frontend,,}/g" "${new_url_frontend,,}.conf"
+sed -i "s+port/+$localhost:$new_port_frontend/+g" "${new_url_frontend,,}.conf"
 echo "====== Configuration Apache Frontend Terminée ======"
 
 echo "====== Configuration Apache Backend ======"
 cp "/var/www/backend_nodejs/apache.txt" "/etc/apache2/sites-available/${new_url_backend,,}.conf"
 cd /etc/apache2/sites-available/
-sed -i "s/server_name/${new_url_backend,,}/g" ${new_url_backend,,}.conf
-sed -i "s/port/$localhost:$new_port_backend/g" ${new_url_backend,,}.conf
+sed -i "s/server_name/${new_url_backend,,}/g" "${new_url_backend,,}.conf"
+sed -i "s+port/+$localhost:$new_port_backend/+g" "${new_url_backend,,}.conf"
 echo "====== Configuration Apache Backend Terminée ======"
 
 echo "====== Activation Frontend ======"

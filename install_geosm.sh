@@ -91,9 +91,9 @@ sed -i "s+port/+$localhost:$new_port_backend/+g" "${new_url_backend,,}.conf"
 echo "====== Configuration Apache Backend Terminée ======"
 
 echo "====== Activation Frontend ======"
-a2ensite
+a2ensite ${new_url_frontend,,}
 echo "====== Activation Backend ======"
-a2ensite
+a2ensite ${new_url_backend,,}
 
 echo "====== Activation des sites terminées ======"
 

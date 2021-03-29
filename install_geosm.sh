@@ -71,7 +71,7 @@ echo "====== Deploiement Terminé ======"ù
 echo "====== Suppression des fichiers QGS ======"
 cd /var/www/geosm/$db/
 rm -r *.qgs
-cd $path_project/docker
+cd $path_projet/docker
 
 echo "====== Création des couches ======"
 docker exec -ti geosm_carto npm run initialiser_projet --projet=${db}
@@ -107,6 +107,11 @@ sudo certbot --apache -d ${new_url_backend,,} -d ${new_url_frontend,,}
 
 echo "====== SSL Activé ======"
 
+echo "========== Mise à jour de la BD ==========="
+curl https://api.geosm.org/api/v1/${nom_instance,,}/updateosm
+
+echo "========= SUPPRESSION DU SHAPEFILE ========="
+rm -r /var/www/backend_nodejs/shp/${db}
 
 
 echo "====== Création de l'instance ${db} Terminée ======"

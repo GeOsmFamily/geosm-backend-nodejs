@@ -32,6 +32,10 @@ echo "====== Url du drapeau en png ======"
 #read new_url_drapeau
 sed -i "s+url_flag+$url_drapeau+g" environment.ts
 
+echo "====== Code ISO du pays ======"
+#read new_country_code
+sed -i "s+code_country+$country_code+g" environment.ts
+
 echo "====== Configuration du Fichier environement Terminée ======"
 
 echo "====== Configuration du Fichier Docker ======"
@@ -62,7 +66,12 @@ cd $path_projet/docker
 docker-compose up -d
 docker  exec -i -t "${new_nom_container}"   /var/www/boot.sh
 
-echo "====== Deploiement Terminé ======"
+echo "====== Deploiement Terminé ======"ù
+
+echo "====== Suppression des fichiers QGS ======"
+cd /var/www/geosm/$db/
+rm -r *.qgs
+cd $path_project/docker
 
 echo "====== Création des couches ======"
 docker exec -ti geosm_carto npm run initialiser_projet --projet=${db}

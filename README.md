@@ -56,6 +56,12 @@ $ docker build --no-cache  -t geosm .
 | user_bd | user of Database |
 | pass_bd | password of Database |
 | port_bd | port of Database  |
+| nom_instance | nom de l'instance |
+| url_drapeau  | url du drapeau |
+| nom_instance_docker | nom de l'instance (généralement le nom du pays en minuscule) |
+| nom_image_docker | nom de l'image docker à utiliser (par defaut geosm)  |
+| port_backend | port du backend |
+| port_frontend | port du frontend |
 
 ##### 2. Créer le projet :
 
@@ -70,7 +76,10 @@ $ exit
 ##### Suivre les configurations demandées dans le terminal
 PS: -Remplir les ports et les noter quelque part afin d'éviter les erreurs docker plutard
 - Le code ISO du pays à remplir est le code ISO 3166
+- il faut creer les entrées dns du frontend et du backend chez l'hebergeur
 
+###### Apres le déploiement
+- Exeuter le lien : https://admin{nom_instance}.geo.sm/api/v1/demo1/updateosm afin de mettre à jour la base de données du pays.
 
 
 ## Pour mettre à jour la BD OSM

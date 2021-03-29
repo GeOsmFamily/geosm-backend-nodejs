@@ -23,28 +23,24 @@ echo $new_url_backend
 sed -i "s+url_backend+https://$new_url_backend+g" environment.ts
 sed -i "s+urlFrontend+https://$new_url_frontend+g" environment.ts
 echo "====== Nom de l'instance ======"
-read new_nom_instance
-echo $new_nom_instance
-sed -i "s/nomInstance/${new_nom_instance^^}/g" environment.ts
+#read new_nom_instance
+echo $nom_instance
+sed -i "s/nomInstance/${nom_instance^^}/g" environment.ts
 sed -i "s/langue/$lang/g" environment.ts
 
 echo "====== Url du drapeau en png ======"
-read new_url_drapeau
-sed -i "s+url_flag+$new_url_drapeau+g" environment.ts
-
-echo "====== Code ISO du pays ======"
-read new_country_code
-sed -i "s+code_country+$new_country_code+g" environment.ts
+#read new_url_drapeau
+sed -i "s+url_flag+$url_drapeau+g" environment.ts
 
 echo "====== Configuration du Fichier environement Terminée ======"
 
 echo "====== Configuration du Fichier Docker ======"
 cd $path_projet/docker/
 echo "====== Nom de l'instance docker ======"
-read nom_instance_docker
+#read nom_instance_docker
 sed -i "s/nom_instance/$nom_instance_docker/g" docker-compose.yml
 echo "====== Nom de l'image Docker à utiliser ======"
-read nom_image_docker
+#read nom_image_docker
 sed -i "s/nom_image/${nom_image_docker,,}/g" docker-compose.yml
 new_nom_container="geosm_${nom_instance_docker,,}"
 cat docker-compose.yml
@@ -52,11 +48,11 @@ echo $new_nom_container
 sed -i "s/nom_container/${new_nom_container,,}/g" docker-compose.yml
 cat docker-compose.yml
 echo "====== Nom du Port Backend ======"
-read new_port_backend
-sed -i "s/port_backend/$new_port_backend/g" docker-compose.yml
+#read new_port_backend
+sed -i "s/port_backend/$port_backend/g" docker-compose.yml
 echo "====== Nom du Port Frontend ======"
-read new_port_frontend
-sed -i "s/port_frontend/$new_port_frontend/g" docker-compose.yml
+#read new_port_frontend
+sed -i "s/port_frontend/$port_frontend/g" docker-compose.yml
 echo "====== Configuration du Fichier Docker Terminée ======"
 
 echo "====== Deploiement des images docker ======"
@@ -67,11 +63,6 @@ docker-compose up -d
 docker  exec -i -t "${new_nom_container}"   /var/www/boot.sh
 
 echo "====== Deploiement Terminé ======"
-
-echo "====== Suppression des fichiers QGS ======"
-cd /var/www/geosm/$db/
-rm -r *.qgs
-cd $path_project/docker
 
 echo "====== Création des couches ======"
 docker exec -ti geosm_carto npm run initialiser_projet --projet=${db}
@@ -96,9 +87,9 @@ sed -i "s+port/+$localhost:$new_port_backend/+g" "${new_url_backend,,}.conf"
 echo "====== Configuration Apache Backend Terminée ======"
 
 echo "====== Activation Frontend ======"
-a2ensite ${new_url_frontend,,}
+a2ensite
 echo "====== Activation Backend ======"
-a2ensite ${new_url_backend,,}
+a2ensite
 
 echo "====== Activation des sites terminées ======"
 

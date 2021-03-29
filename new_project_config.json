@@ -8,6 +8,12 @@
     "db": "demo",
     "user_bd": "postgres",
     "pass_bd": "postgresgeosm",
-    "port_bd": 5432
+    "port_bd": 5432,
+    "nom_instance": "CAMEROUN",
+    "url_drapeau": "",
+    "nom_instance_docker": "cameroun",
+    "nom_image_docker": "geosm",
+    "port_backend": "",
+    "port_frontend": ""
 
 }

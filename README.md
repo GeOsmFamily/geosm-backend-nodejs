@@ -71,16 +71,15 @@ $ sudo chown -R postgres:postgres /var/www/
 $ chmod +x ./install_geosm.sh
 $ dos2unix ./install_geosm.sh
 $ ./install_geosm.sh
+$ cd /var/www/backend_nodejs
+$ ./create_project.sh
 $ exit
 
 ```
-##### Suivre les configurations demandées dans le terminal
 PS: -Remplir les ports et les noter quelque part afin d'éviter les erreurs docker plutard
 - Le code ISO du pays à remplir est le code ISO 3166
 - il faut creer les entrées dns du frontend et du backend chez l'hebergeur
 
-###### Apres le déploiement
-- Exeuter le lien : https://api.geosm.org/api/v1/{nom_instance}/updateosm afin de mettre à jour la base de données du pays.
 
 
 ## Pour mettre à jour la BD OSM
@@ -104,17 +103,15 @@ $ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of databas
 
 ## Existing replication 
 
-* Cameroun ([GeoCameroun]( http://geoportail.geocameroun.cm/))
-* Itasy (Region in Madagascar)  ([geoitasy beta]( http://geoitasy.com))
-* France ([Data OSM](http://geosm.openstreetmap.fr/))
+* Cameroun ([Cameroun](https://cameroun.geo.sm/))
+* France ([Data OSM](https://demo.openstreetmap.fr/))
 
 ## Thanks
 
 GEOSM is what it is because of some crazy people, company and free and open source projects. Let's name a few:
-* Karl TAYOU : Main developer
+* Karl TAYOU, Boris Gautier TCHOUKOUAHA,  Anas LAGHRISSI, Jordy BAYO : developers
 * Willy Franck SOB : The energy he put through GeoCameroon which was the first GEOSM implementation. This helped to ameliorate the user interface and to the addition of some new awesome features
- * Anas LAGHRISSI
-* Jean-Louis Zimmerman : For his implication which resulted in the definition of more than 300 layers
+* Derrick DEMEVENG
 * SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend ( Aka les CAURI)
 * OpenStreetMap ([OSM](http://osm.org))
 * Openlayers ([Website](http://openlayers.com))

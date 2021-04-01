@@ -85,14 +85,14 @@ cp "/var/www/backend_nodejs/apache.txt" "/etc/apache2/sites-available/${new_url_
 localhost="http://localhost"
 cd /etc/apache2/sites-available/
 sed -i "s/server_name/${new_url_frontend,,}/g" "${new_url_frontend,,}.conf"
-sed -i "s+port/+$localhost:$new_port_frontend/+g" "${new_url_frontend,,}.conf"
+sed -i "s+port/+$localhost:$port_frontend/+g" "${new_url_frontend,,}.conf"
 echo "====== Configuration Apache Frontend Terminée ======"
 
 echo "====== Configuration Apache Backend ======"
 cp "/var/www/backend_nodejs/apache.txt" "/etc/apache2/sites-available/${new_url_backend,,}.conf"
 cd /etc/apache2/sites-available/
 sed -i "s/server_name/${new_url_backend,,}/g" "${new_url_backend,,}.conf"
-sed -i "s+port/+$localhost:$new_port_backend/+g" "${new_url_backend,,}.conf"
+sed -i "s+port/+$localhost:$port_backend/+g" "${new_url_backend,,}.conf"
 echo "====== Configuration Apache Backend Terminée ======"
 
 echo "====== Activation Frontend ======"
@@ -112,6 +112,5 @@ curl https://api.geosm.org/api/v1/${nom_instance,,}/updateosm
 
 echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}
-
 
 echo "====== Création de l'instance ${db} Terminée ======"

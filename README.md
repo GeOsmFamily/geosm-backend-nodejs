@@ -80,7 +80,20 @@ PS: -Remplir les ports et les noter quelque part afin d'éviter les erreurs dock
 - Le code ISO du pays à remplir est le code ISO 3166
 - il faut creer les entrées dns du frontend et du backend chez l'hebergeur
 
+## Créer une instance differente de geosm
+- Tout d'abord il faut mettre a jour le Dockerfile de geosm avec le lien des nouveaux dépots et creer une nouvelle image:
+```
+$ cd /var/www/backend_nodejs/docker_geosm
+$ nano Dockerfile
+$ docker build --no-cache  -t "nom_de_l'image" .
+```
+- Modifier le fichier create_project.sh avec l'url des nouveaux dépots
+```
+$ cd /var/www/backend_nodejs/
+$ nano create_project.sh
+```
 
+- Puis relancer les commandes de creations d'une instance de la section précédente
 
 ## Pour mettre à jour la BD OSM
 ```sh

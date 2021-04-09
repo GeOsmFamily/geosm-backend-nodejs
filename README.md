@@ -126,7 +126,7 @@ GEOSM is what it is because of some crazy people, company and free and open sour
 *  Boris Gautier TCHOUKOUAHA,  Anas LAGHRISSI, Jordy BAYO : developers
 * Willy Franck SOB : The energy he put through GeoCameroon which was the first GEOSM implementation. This helped to ameliorate the user interface and to the addition of some new awesome features
 * Derrick DEMEVENG
-* SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend ( Aka les CAURI)
+* SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend
 * OpenStreetMap ([OSM](http://osm.org))
 * Openlayers ([Website](http://openlayers.com))
 * QGIS SERVER ([Website](https://docs.qgis.org/3.4/en/docs/training_manual/qgis_server/index.html))

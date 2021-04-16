@@ -66,7 +66,7 @@ cd $path_projet/docker
 docker-compose up -d
 docker  exec -i -t "${new_nom_container}"   /var/www/boot.sh
 
-echo "====== Deploiement Terminé ======"ù
+echo "====== Deploiement Terminé ======"
 
 echo "====== Suppression des fichiers QGS ======"
 cd /var/www/geosm/$db/
@@ -96,9 +96,12 @@ sed -i "s+port/+$localhost:$port_backend/+g" "${new_url_backend,,}.conf"
 echo "====== Configuration Apache Backend Terminée ======"
 
 echo "====== Activation Frontend ======"
-a2ensite
+a2ensite ${new_url_frontend,,}
 echo "====== Activation Backend ======"
-a2ensite
+a2ensite ${new_url_backend,,}
+
+apachectl configtest
+service apache2 restart
 
 echo "====== Activation des sites terminées ======"
 
@@ -114,3 +117,4 @@ echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}
 
 echo "====== Création de l'instance ${db} Terminée ======"
+

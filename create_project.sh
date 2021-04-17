@@ -13,6 +13,7 @@ psql -c "CREATE DATABASE $db"
 echo "db created"
 psql -d  $db -c "CREATE EXTENSION postgis"
 psql -d $db -c "CREATE EXTENSION hstore"
+psql -d $db -c "CREATE EXTENSION unaccent"
 #psql CREATE EXTENSION postgis_topology
 echo "extention created"
 if [ $lang == 'en' ]

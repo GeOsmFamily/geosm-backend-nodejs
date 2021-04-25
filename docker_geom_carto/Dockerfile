@@ -27,12 +27,12 @@ RUN rm -rf /var/www/geosm/ || true
 RUN mkdir /var/www/geosm/
 RUN chmod -R 777 /var/www/geosm/
 
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
 RUN npm install -g forever
 
 RUN rm -rf /home/keopx/backend_nodejs/ || true
 WORKDIR /home/keopx/
-RUN git clone https://github.com/GeoOSM/backend_nodejs
+RUN git clone https://github.com/GeOsmFamily/geosm-backend-nodejs.git/ ./backend_nodejs
 RUN cp /home/keopx/backend_nodejs/docker_geom_carto/boot_geosm_carto.sh /home/keopx/
 WORKDIR /home/keopx/backend_nodejs/
 RUN npm install

@@ -11,7 +11,7 @@ Le bon fonctionnement de GeOsm nécessite le respect des étapes suivantes..
 ##### 1. Déploiement du projet Node JS
 
 ```sh
-$ git clone https://github.com/GeoOSM/backend_nodejs
+$ git clone https://github.com/GeOsmFamily/geosm-backend-nodejs.git/ ./backend_nodejs
 $ cd ./backend_nodejs/docker_geom_carto
 $ docker-compose build --no-cache
 $ docker-compose up -d

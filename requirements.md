@@ -34,6 +34,14 @@ changer le mot de passe et donner les droits d'accès TCP à la BD
 
 install link : https://computingforgeeks.com/install-postgresql-11-on-debian-10-buster/
 
+```sh
+$ sudo nano /etc/postgresql/11/main/pg_hba.conf
+```
+Add the following line as the first line of pg_hba.conf. It allows access to all databases for all users with an encrypted password:
+
+host  all  all 0.0.0.0/0 md5
+
+
 # osm2pgsql latest
 
 ```sh

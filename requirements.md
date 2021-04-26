@@ -17,9 +17,9 @@ $ docker run -p 8080:8080 \
        3liz/qgis-map-server
 ```
 
-# Node js 12
+# Node js 11
 ```sh
-$ curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 ```
 
 # PostgreSQL & Postgis 

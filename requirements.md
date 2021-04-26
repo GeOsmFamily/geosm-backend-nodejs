@@ -17,9 +17,9 @@ $ docker run -p 8080:8080 \
        3liz/qgis-map-server
 ```
 
-# Node js 11
+# Node js 12
 ```sh
-$ curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
 ```
 
 # PostgreSQL & Postgis 
@@ -30,6 +30,7 @@ $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo ap
 $ sudo apt-get update
 $ sudo apt-get -y install postgresql-11 postgresql-client-11 postgresql-11-postgis-3
 ```
+changer le mot de passe et donner les droites d'accès TCP à la BD
 
 # osm2pgsql latest
 

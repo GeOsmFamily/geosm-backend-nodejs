@@ -36,7 +36,7 @@ RUN rm -rf /var/www/geosm/ || true
 RUN mkdir /var/www/geosm/
 RUN chmod -R 777 /var/www/geosm/
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 RUN npm install -g forever
 
 RUN rm -rf /home/keopx/backend_nodejs/ || true

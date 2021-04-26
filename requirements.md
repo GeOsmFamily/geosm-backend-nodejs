@@ -30,7 +30,9 @@ $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo ap
 $ sudo apt-get update
 $ sudo apt-get -y install postgresql-11 postgresql-client-11 postgresql-11-postgis-3
 ```
-changer le mot de passe et donner les droites d'accès TCP à la BD
+changer le mot de passe et donner les droits d'accès TCP à la BD
+
+install link : https://computingforgeeks.com/install-postgresql-11-on-debian-10-buster/
 
 # osm2pgsql latest
 

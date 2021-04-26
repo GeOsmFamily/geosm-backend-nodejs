@@ -20,8 +20,6 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
 RUN gpg --fingerprint F7E06F06199EF2F2
 
-RUN apt-get update
-
 RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
 RUN apt-get update
@@ -34,9 +32,9 @@ RUN a2enmod proxy_http
 RUN a2enmod headers
 # RUN sed -i "s/PassEnv/#PassEnv/g" /etc/apache2/conf-available/qgis.conf 
 # RUN service apache2 restart
-RUN rm -rf /var/www/geosm/ || true
-RUN mkdir /var/www/geosm/
-RUN chmod -R 777 /var/www/geosm/
+RUN rm -rf /home/disk2/geosm/ || true
+RUN mkdir /home/disk2/geosm/
+RUN chmod -R 777 /home/disk2/geosm/
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
 RUN npm install -g forever

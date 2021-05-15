@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 
 RUN rm -rf /var/www/GeoOSM_Backend/ || true
 RUN git clone -b v7.2 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
@@ -45,7 +45,7 @@ RUN cd /var/www/GeoOSM_Backend && composer install
 
 
 RUN rm -rf /var/www/GeoOSM_Frontend/ || true
-RUN git clone  https://github.com/GeOsmFamily/geosm-frontend.git ./GeoOSM_Frontend
+RUN git clone  https://github.com/GeOsmFamily/GeOsm-App.git ./GeoOSM_Frontend
 RUN cd /var/www/GeoOSM_Frontend/ && npm install
 
 RUN rm -rf /var/www/backend_nodejs/ || true

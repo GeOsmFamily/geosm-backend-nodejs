@@ -96,7 +96,7 @@ mv ./GeoOSM_Backend/public/assets/admin/images $path_projet/docker/public/assets
 rm -rf  ./GeoOSM_Backend
 
 rm -rf  ./GeoOSM_Frontend
-git clone https://github.com/GeOsmFamily/geosm-frontend.git ./GeoOSM_Frontend
+git clone https://github.com/GeOsmFamily/GeOsm-App.git ./GeoOSM_Frontend
 mv ./GeoOSM_Frontend/src/assets/ $path_projet/docker/client/
 mv ./GeoOSM_Frontend/src/environments/ $path_projet/docker/client/environments/
 cp $path_projet/docker/client/environments/environment-example.ts $path_projet/docker/client/environments/environment.ts

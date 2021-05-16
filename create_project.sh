@@ -88,7 +88,7 @@ mkdir -m 777 -p $path_projet/docker/public/assets/admin/images
 mkdir -m 777 -p $path_projet/docker/client/
 
 rm -rf  ./GeoOSM_Backend
-git clone -b v7.2 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
+git clone -b v5.2 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
 mv ./GeoOSM_Backend/.env.example $path_projet/docker/public/.env.example
 mv ./GeoOSM_Backend/public/assets/config_template.js $path_projet/docker/public/assets/config_template.js
 mv ./GeoOSM_Backend/public/assets/images $path_projet/docker/public/assets/

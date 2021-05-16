@@ -20,8 +20,8 @@ cd $path_projet/docker/client/environments
 new_url_backend="admin${db}.geo.sm"
 new_url_frontend="${db}.geo.sm"
 echo $new_url_backend
-sed -i "s+url_backend+https://$new_url_backend+g" environment.ts
-sed -i "s+urlFrontend+https://$new_url_frontend+g" environment.ts
+sed -i "s+url_backend+http://$new_url_backend+g" environment.ts
+sed -i "s+urlFrontend+http://$new_url_frontend+g" environment.ts
 echo "====== Nom de l'instance ======"
 #read new_nom_instance
 echo $nom_instance
@@ -105,10 +105,6 @@ service apache2 restart
 
 echo "====== Activation des sites terminées ======"
 
-echo "====== Activation du SSL ======"
-sudo certbot --apache -d ${new_url_backend,,} -d ${new_url_frontend,,}
-
-echo "====== SSL Activé ======"
 
 echo "========== Mise à jour de la BD ==========="
 curl https://api.geosm.org/api/v1/${nom_instance,,}/updateosm

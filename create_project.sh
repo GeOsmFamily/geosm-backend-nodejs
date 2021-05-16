@@ -117,7 +117,7 @@ echo "Fichier de configuration pour NODE js crée"
 
 cp $path_projet"/docker/public/assets/config_template.js" $path_projet"/docker/public/assets/config.js" 
 
-jq -n  --arg rootApp "/var/www/GeoOSM_Backend/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg urlBackend "https://admin"$db".geo.sm/" --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"urlBackend":$urlBackend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
+jq -n  --arg rootApp "/var/www/GeoOSM_Backend/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg urlBackend "http://admin"$db".geo.sm/" --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"urlBackend":$urlBackend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
 
 sed  -i '1i var config_projet =' $path_projet"/docker/public/assets/config.js"
 

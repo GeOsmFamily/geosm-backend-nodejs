@@ -101,7 +101,7 @@ mv ./GeoOSM_Frontend/src/assets/ $path_projet/docker/client/
 mv ./GeoOSM_Frontend/src/environments/ $path_projet/docker/client/environments/
 cp $path_projet/docker/client/environments/environment-example.ts $path_projet/docker/client/environments/environment.ts
 sed -i "s+'path_qgis_value'+"'"'${geosm_dir}'"'"+g" $path_projet/docker/client/environments/environment.ts
-sed -i "s/'pojet_nodejs_value'/"'"'${db}'"'"/g" $path_projet/docker/client/environments/environment.ts
+sed -i "s/'pojet_nodejs'/"'"'${db}'"'"/g" $path_projet/docker/client/environments/environment.ts
 chmod -R 755 $path_projet/docker/
 rm -rf  ./GeoOSM_Frontend
 

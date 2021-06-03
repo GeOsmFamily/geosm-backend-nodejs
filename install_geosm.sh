@@ -107,7 +107,7 @@ echo "====== Activation des sites terminées ======"
 
 
 echo "========== Mise à jour de la BD ==========="
-curl https://api.geosm.org/api/v1/${nom_instance,,}/updateosm
+curl https://api.geo.sm/api/v1/${nom_instance,,}/updateosm
 
 echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}

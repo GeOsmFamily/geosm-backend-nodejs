@@ -129,6 +129,13 @@ sed -i 's/database_name/'${db}'/g' $path_projet"/docker/public/.env"
 echo "Fichier de configuration pour laravel crée"
 echo "====== CONFIGURATION DES FICHIERS DE CONFIG DE NODE JS ET LARAVEL TERMINE ======"
 
+echo "Creation du GeoJSON"
+
+ogr2ogr -t_srs EPSG:4326 -f GeoJSON $path_projet/docker/client/assets/country.geojson $roi
+
+echo "=========== CREATION DU GEOJSON TERMINEE ==============="
+
+
 
 
 

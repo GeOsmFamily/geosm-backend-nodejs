@@ -116,16 +116,13 @@ $ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of databas
 
 ## Existing replication 
 
-* Cameroun ([Cameroun](https://cameroun.geo.sm/))
-* France ([Data OSM](https://demo.openstreetmap.fr/))
+* Cameroun ([Cameroun](http://cameroun.geo.sm/))
+* Suisse ([Data OSM](http://suisse.geo.sm/))
 
 ## Thanks
 
 GEOSM is what it is because of some crazy people, company and free and open source projects. Let's name a few:
-*  Karl TAYOU: Main Developper
-*  Boris Gautier TCHOUKOUAHA,  Anas LAGHRISSI, Jordy BAYO : developers
-* Willy Franck SOB : The energy he put through GeoCameroon which was the first GEOSM implementation. This helped to ameliorate the user interface and to the addition of some new awesome features
-* Derrick DEMEVENG
+
 * SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend
 * OpenStreetMap ([OSM](http://osm.org))
 * Openlayers ([Website](http://openlayers.com))

@@ -1,7 +1,7 @@
 {
-  "name": "web_geoservice_de_geoosm",
-  "version": "1.0.0",
-  "description": "Manipulation des données et de prpjets qgis",
+  "name": "web_geoservice_de_geosm",
+  "version": "1.2.0",
+  "description": "Manipulation des données et de projets qgis",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,8 +14,8 @@
     "getMostOccurenceTags": "node -e 'require(\"./server\").getMostOccurenceTags(process.env.npm_config_projet)'",
     "start": "node server.js"
   },
-  "author": "Karl TAYOU",
-  "email": "nelsontayou1@gmail.com",
+  "author": "GeOsm Family",
+  "email": "infos@geo.sm",
   "license": "ISC",
   "dependencies": {
     "@mapbox/mbtiles": "*",

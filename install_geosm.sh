@@ -20,22 +20,18 @@ cd $path_projet/docker/client/environments
 new_url_backend="admin${db}.geo.sm"
 new_url_frontend="${db}.geo.sm"
 echo $new_url_backend
-sed -i "s+url_backend+http://$new_url_backend+g" environment.ts
-sed -i "s+urlFrontend+http://$new_url_frontend+g" environment.ts
+sed -i "s+url_backend+https://$new_url_backend+g" environment.prod.ts
+sed -i "s+urlFrontend+https://$new_url_frontend+g" environment.prod.ts
 echo "====== Nom de l'instance ======"
 #read new_nom_instance
 echo $nom_instance
-sed -i "s/nomInstance/${nom_instance^^}/g" environment.ts
-sed -i "s/langue/$lang/g" environment.ts
-
-echo "====== Url du drapeau en png ======"
-#read new_url_drapeau
-sed -i "s+url_flag+$url_drapeau+g" environment.ts
+sed -i "s/nomInstance/${nom_instance^^}/g" environment.prod.ts
+sed -i "s/langue/$lang/g" environment.prod.ts
 
 echo "====== Code ISO du pays ======"
 #read new_country_code
-sed -i "s+code_country+$country_code+g" environment.ts
-
+sed -i "s+code_country+$country_code+g" environment.prod.ts
+cp $path_projet/docker/client/environments/environment.prod.ts $path_projet/docker/client/environments/environment.ts
 echo "====== Configuration du Fichier environement Terminée ======"
 
 echo "====== Configuration du Fichier Docker ======"
@@ -105,6 +101,9 @@ service apache2 restart
 
 echo "====== Activation des sites terminées ======"
 
+echo "======Installation du SSL ======="
+sudo certbot --apache -d ${new_url_frontend,,} -d ${new_url_backend,,} --redirect
+echo "======Installation du SSL Terminée ======="
 
 echo "========== Mise à jour de la BD ==========="
 curl https://api.geo.sm/api/v1/${nom_instance,,}/updateosm
@@ -113,4 +112,5 @@ echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}
 
 echo "====== Création de l'instance ${db} Terminée ======"
+
 

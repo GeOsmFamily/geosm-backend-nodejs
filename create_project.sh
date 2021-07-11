@@ -56,6 +56,7 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=$user_bd dbname=$db password=$pa
 psql -d $db -c "UPDATE instances_gc SET geom = ST_Buffer(st_transform(limite.geom ,4326)::geography,10)::geometry, true_geom = st_transform(limite.geom,4326) FROM (SELECT * from temp_table limit 1) as limite WHERE instances_gc.id = 1;"
 psql -d $db -c "TRUNCATE temp_table;"
 
+
 echo "====== IMPORT DE LA ZONE D'INTERET TERMINE ======"
 
 echo "====== CREATION DES REPERTOIRE POUR QGIS SERVEUR (GPKG,STYLE) ======"
@@ -88,7 +89,7 @@ mkdir -m 777 -p $path_projet/docker/public/assets/admin/images
 mkdir -m 777 -p $path_projet/docker/client/
 
 rm -rf  ./GeoOSM_Backend
-git clone -b v5.2 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
+git clone -b v8 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
 mv ./GeoOSM_Backend/.env.example $path_projet/docker/public/.env.example
 mv ./GeoOSM_Backend/public/assets/config_template.js $path_projet/docker/public/assets/config_template.js
 mv ./GeoOSM_Backend/public/assets/images $path_projet/docker/public/assets/
@@ -96,16 +97,23 @@ mv ./GeoOSM_Backend/public/assets/admin/images $path_projet/docker/public/assets
 rm -rf  ./GeoOSM_Backend
 
 rm -rf  ./GeoOSM_Frontend
-git clone https://github.com/GeOsmFamily/GeOsm-App.git ./GeoOSM_Frontend
+git clone https://github.com/GeOsmFamily/geosm-frontend-final.git ./GeoOSM_Frontend
 mv ./GeoOSM_Frontend/src/assets/ $path_projet/docker/client/
 mv ./GeoOSM_Frontend/src/environments/ $path_projet/docker/client/environments/
-cp $path_projet/docker/client/environments/environment-example.ts $path_projet/docker/client/environments/environment.ts
-sed -i "s+'path_qgis_value'+"'"'${geosm_dir}'"'"+g" $path_projet/docker/client/environments/environment.ts
-sed -i "s/'pojet_nodejs_value'/"'"'${db}'"'"/g" $path_projet/docker/client/environments/environment.ts
+cp $path_projet/docker/client/environments/environment-example.ts $path_projet/docker/client/environments/environment.prod.ts
+sed -i "s+'path_qgis_value'+"'"'${geosm_dir}'"'"+g" $path_projet/docker/client/environments/environment.prod.ts
+sed -i "s/'pojet_nodejs_value'/"'"'${db}'"'"/g" $path_projet/docker/client/environments/environment.prod.ts
+cp $path_projet/docker/client/environments/environment.prod.ts $path_projet/docker/client/environments/environment.ts
 chmod -R 755 $path_projet/docker/
 rm -rf  ./GeoOSM_Frontend
 
 cp $geosm_nodejs_dir/docker/htaccess.txt $path_projet/docker/client/htaccess.txt
+
+echo "Creation du GeoJSON"
+
+ogr2ogr -t_srs EPSG:4326 -f GeoJSON $path_projet/docker/client/assets/country.geojson $roi
+
+echo "=========== CREATION DU GEOJSON TERMINEE ==============="
 
 echo "====== Telechargements des elements pour DOCKER TERMINE======"
 
@@ -117,7 +125,7 @@ echo "Fichier de configuration pour NODE js crée"
 
 cp $path_projet"/docker/public/assets/config_template.js" $path_projet"/docker/public/assets/config.js" 
 
-jq -n  --arg rootApp "/var/www/GeoOSM_Backend/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg urlBackend "http://admin"$db".geo.sm/" --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"urlBackend":$urlBackend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
+jq -n  --arg rootApp "/var/www/GeoOSM_Backend/" --arg urlNodejs $urlNodejs_backend"importation" --arg urlNodejs_backend $urlNodejs_backend --arg urlBackend "https://admin"$db".geo.sm/" --arg projet_qgis_server $db '{"rootApp":$rootApp,"urlNodejs":$urlNodejs,"urlNodejs_backend":$urlNodejs_backend,"urlBackend":$urlBackend,"projet_qgis_server":$projet_qgis_server}' > $path_projet"/docker/public/assets/config.js"
 
 sed  -i '1i var config_projet =' $path_projet"/docker/public/assets/config.js"
 
@@ -129,12 +137,7 @@ sed -i 's/database_name/'${db}'/g' $path_projet"/docker/public/.env"
 echo "Fichier de configuration pour laravel crée"
 echo "====== CONFIGURATION DES FICHIERS DE CONFIG DE NODE JS ET LARAVEL TERMINE ======"
 
-echo "Creation du GeoJSON"
 
-rm $path_projet/docker/client/assets/country.geojson
-ogr2ogr -t_srs EPSG:4326 -f GeoJSON $path_projet/docker/client/assets/country.geojson $roi
-
-echo "=========== CREATION DU GEOJSON TERMINEE ==============="
 
 
 
@@ -144,65 +147,5 @@ echo "termne !!!!! !!! !"
 exit
 
 
-# sudo apt-get install php7.3-xml
-# sudo apt-get install php-mbstring
-#sudo apt-get install php7.3-zip
-#sudo apt-get install python3-shapely
-# sudo add-apt-repository ppa:ubuntugis/ppa && sudo apt-get update
-# sudo apt-get install gdal-bin
-#mkdir -m 777 -p /var/www/geosm/style
-#mkdir -m 777 -p /var/www/geosm/analyse
-#apt-get install jq
-#  apt-get install moreutils
-#npm install -g github-files-fetcher
-#npm install forever -g
-#sudo a2enmod proxy_http
-# sudo a2enmod rewrite
-
-####### pour debian 10 #######
-#vim /etc/apt/sources.list
-# deb     https://qgis.org/debian buster main
-# deb-src https://qgis.org/debian buster main
-
-####### pour ubuntu 18 #######
-#vim /etc/apt/sources.list
-# deb     https://qgis.org/ubuntu bionic main
-# deb-src https://qgis.org/ubuntu bionic main
-
-# wget -O - https://qgis.org/downloads/qgis-2019.gpg.key | gpg --import
-# gpg --fingerprint 51F523511C7028C3
-# gpg --export --armor 51F523511C7028C3 | sudo apt-key add -
-# sudo apt-get update
-# apt install qgis-server
-#apt install  libapache2-mod-fcgid
-#a2enmod fcgid
-#a2enmod headers
-#apt-get install php7.2-gd
-
-# mkdir /var/log/qgis/
-# chown www-data:www-data /var/log/qgis
-# mkdir /home/qgis/qgisserverdb
-# chown www-data:www-data /home/qgis/qgisserverdb
-
-# Donner le mot de passe postgres à l'utilisateur postgres dans la bd
-#su postgres
-#psql
-#ALTER USER postgres WITH PASSWORD 'postgres';
-
-#npm run initialiser_projet --projet=mali
-#npm run apply_style_projet --projet=mali
-#a2ensite la conf
-#systemctl reload apache2
-
-#étant root, si non il ecrira pas les log : forever start  -a --minUptime 5000  --spinSleepTime 5000 -l process.log -o out.log -e err.log server.js
-# log de forver alors sont cat /root/.forever/process.log
 
 
-#php artisan migrate
-
-# 2a01:e0d:1:c:58bf
-# @2a01:e0d:1:c:58bf:fac1:8000:167
-
-# http://[2a01:e0d:1:c:58bf:fac1:8000:167]
-
-# [2607:f0d0:1002:11::4:80] 

@@ -13,10 +13,12 @@ services:
       - ./public/upload/:/var/www/GeoOSM_Backend/public/upload
       - ./public/download/:/var/www/GeoOSM_Backend/public/download
 
+      - ./client/environments/environment.prod.ts:/var/www/GeoOSM_Frontend/src/environments/environment.prod.ts
       - ./client/environments/environment.ts:/var/www/GeoOSM_Frontend/src/environments/environment.ts
       - ./client/environments/color.scss:/var/www/GeoOSM_Frontend/src/environments/color.scss
       - ./client/htaccess.txt:/var/www/GeoOSM_Frontend/htaccess.txt
       - ./client/assets/:/var/www/GeoOSM_Frontend/assets/
+      - ./client/assets/:/var/www/GeoOSM_Frontend/src/assets/
 
       - ./php/php.ini:/etc/php/7.4/cli/conf.d/30local.ini
       - ./vhost-apache/:/etc/apache2/sites-available/
@@ -28,4 +30,3 @@ services:
     ports:
       - port_backend:8060
       - port_frontend:8070
-

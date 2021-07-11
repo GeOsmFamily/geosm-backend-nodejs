@@ -3,6 +3,7 @@ Pour Debian 10 (Buster)
 ```sh
 $ sudo apt-get install wget gdal-bin zip jq curl moreutils dos2unix
 ```
+
 # QGIS Server
 
 On utilise le docker de 3liz/py-qgis-server :https://github.com/3liz/py-qgis-server/tree/master/docker
@@ -14,15 +15,17 @@ $ docker run -p 8080:8080 \
        -e QGSRV_LOGGING_LEVEL=DEBUG  \
        -e QGSRV_CACHE_ROOTDIR=/projects \
        -e QGSRV_CACHE_SIZE=10 \
-       3liz/qgis-map-server
+       3liz/qgis-map-server:3.10
 ```
 
-# Node js 11
+# Node js 14
+
 ```sh
-$ curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
 ```
 
-# PostgreSQL & Postgis 
+# PostgreSQL & Postgis
+
 ```sh
 $ RELEASE=$(lsb_release -cs)
 $ echo "deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}"-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list
@@ -30,6 +33,7 @@ $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo ap
 $ sudo apt-get update
 $ sudo apt-get -y install postgresql-11 postgresql-client-11 postgresql-11-postgis-3
 ```
+
 changer le mot de passe et donner les droits d'accès TCP à la BD
 
 install link : https://computingforgeeks.com/install-postgresql-11-on-debian-10-buster/
@@ -37,10 +41,10 @@ install link : https://computingforgeeks.com/install-postgresql-11-on-debian-10-
 ```sh
 $ sudo nano /etc/postgresql/11/main/pg_hba.conf
 ```
+
 Add the following line as the first line of pg_hba.conf. It allows access to all databases for all users with an encrypted password:
 
-host  all  all 0.0.0.0/0 md5
-
+host all all 0.0.0.0/0 md5
 
 # osm2pgsql latest
 
@@ -56,7 +60,7 @@ $ cd ../../
 $ rm -rf osm2pgsql
 ```
 
-# Docker 
+# Docker
 
 ```sh
 $ sudo apt-get update

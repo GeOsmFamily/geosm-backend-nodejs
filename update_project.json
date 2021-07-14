@@ -1,0 +1,18 @@
+{
+    "roi": "/var/www/backend_nodejs/shp/cameroun/CMR_adm0.shp",
+    "urlNodejs_backend": "https://service.geo.sm/",
+    "path_projet": "/var/www/demo",
+    "geosm_dir": "/var/www/geosm/",
+    "lang": "fr",
+    "db": "demo",
+    "user_bd": "",
+    "pass_bd": "",
+    "port_bd": 5432,
+    "country_code": "cm",
+    "nom_instance": "CAMEROUN",
+    "nom_instance_docker": "cameroun",
+    "nom_image_docker": "geosm",
+    "port_backend": "",
+    "port_frontend": ""
+
+}

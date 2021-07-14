@@ -18,7 +18,7 @@
   "email": "infos@geo.sm",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/mbtiles": "*",
+    "@mapbox/mbtiles": "^0.12.1",
     "@turf/turf": "^5.1.6",
     "body-parser": "^1.18.2",
     "connect-timeout": "^1.9.0",

@@ -111,6 +111,8 @@ $ nano create_project.sh
 $ cd /var/www/backend_nodejs
 $ nano update_project.json
 $ sudo chown -R postgres:postgres /var/www/
+$ su - postgres
+$ cd /var/www/backend_nodejs
 $ chmod +x ./update_project.sh
 $ dos2unix ./update_project.sh
 $ ./update_project.sh

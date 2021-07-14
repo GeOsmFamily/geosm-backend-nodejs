@@ -147,7 +147,7 @@ $ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of databas
 ## Existing replication
 
 - Cameroun ([Cameroun](http://cameroun.geo.sm/))
-- Suisse ([Data OSM](http://suisse.geo.sm/))
+- Suisse ([Suisse](http://suisse.geo.sm/))
 
 ## Thanks
 

@@ -7,21 +7,6 @@ done
 geosm_nodejs_dir='./'
 list_projet='./projet.json'
 
-echo "====== Mise à jour de la BD ======"
-
-if [ $lang == 'en' ]
-    then 
-        pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose
-        echo "template english"
-elif [ $lang == 'ville' ]
-    then
-        pg_restore -U postgres -d $db  ./BD/template_ville_bd.backup --verbose
-        echo "template ville"
-else
-        pg_restore -U postgres -d $db  ./BD/template_bd.backup --verbose
-        echo "template french"
-fi
-
 
 echo "====== Telechargements des elements pour DOCKER ======"
 

@@ -112,9 +112,12 @@ $ cd /var/www/backend_nodejs
 $ nano update_project.json
 $ sudo chown -R postgres:postgres /var/www/
 $ su - postgres
-$ pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose (remplacer $db par le nom de la base de données et changer repertoire en fonction du template de l\'instance)
-$ exit
 $ cd /var/www/backend_nodejs
+$ pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose
+
+(remplacer $db par le nom de la base de données et changer repertoire en fonction du template de l\'instance)
+
+$ exit
 $ chmod +x ./update_project.sh
 $ dos2unix ./update_project.sh
 $ ./update_project.sh

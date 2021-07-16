@@ -52,7 +52,7 @@ echo "====== creation des index sur les colomnes terminées ======"
 echo "====== IMPORT DE LA ZONE D'INTERET ======"
 
 psql -d $db -c "DROP TABLE IF EXISTS temp_table;"
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=$user_bd dbname=$db password=$pass_bd"  $roi -nln temp_table -nlt MULTIPOLYGON  -lco GEOMETRY_NAME=geom
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=$user_bd dbname=$db password=$pass_bd"  $roi -nln temp_table -nlt MULTIPOLYGON  -lco GEOMETRY_NAME=geom -lco precision=NO
 psql -d $db -c "UPDATE instances_gc SET geom = ST_Buffer(st_transform(limite.geom ,4326)::geography,10)::geometry, true_geom = st_transform(limite.geom,4326) FROM (SELECT * from temp_table limit 1) as limite WHERE instances_gc.id = 1;"
 psql -d $db -c "TRUNCATE temp_table;"
 

@@ -113,7 +113,7 @@ $ nano update_project.json
 $ sudo chown -R postgres:postgres /var/www/
 $ su - postgres
 $ cd /var/www/backend_nodejs
-$ pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose
+$ pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose --clean
 
 (remplacer $db par le nom de la base de données et changer repertoire en fonction du template de l\'instance)
 

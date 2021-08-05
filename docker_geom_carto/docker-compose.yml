@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   geosm_carto:
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     image: keopx/apache-php:7.3
     container_name: geosm_carto
     restart: unless-stopped
@@ -15,4 +15,4 @@ services:
       - ./boot_qgis_server.sh:/home/keopx/boot_qgis_server.sh
       - ./service.conf:/etc/apache2/sites-available/service.conf
     ports:
-      - "8080:80" 
+      - "9090:80"

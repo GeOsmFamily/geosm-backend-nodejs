@@ -43,7 +43,7 @@ $ cd /var/www/backend_nodejs/docker_geosm
 $ docker build --no-cache  -t geosm .
 ```
 
-## Créer une instance geosm
+## Créer une instance GeOsm
 
 ##### 1. Editer le fichier backend_nodejs/new_project_config.json :
 

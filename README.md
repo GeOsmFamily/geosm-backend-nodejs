@@ -146,14 +146,15 @@ $ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of databas
 
 ## Existing replication
 
-- Cameroun ([Cameroun](http://cameroun.geo.sm/))
-- Suisse ([Suisse](http://suisse.geo.sm/))
+- Cameroun ([Cameroun](https://cameroun.geo.sm/))
+- Suisse ([Suisse](https://suisse.geo.sm/))
 
 ## Thanks
 
 GEOSM is what it is because of some crazy people, company and free and open source projects. Let's name a few:
 
 - SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend
+- Thanks to KARL TAYOU for his contribution to the development of this project
 - OpenStreetMap ([OSM](http://osm.org))
 - Openlayers ([Website](http://openlayers.com))
 - QGIS SERVER ([Website](https://docs.qgis.org/3.4/en/docs/training_manual/qgis_server/index.html))

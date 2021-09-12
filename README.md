@@ -135,12 +135,12 @@ $ nano /var/www/geosm/<name of database of project>/up-to-date/state.txt
     timestamp=osmosis_replication_timestamp - 24h (Ex 2020-04-28T20:59:03Z - 24h = 2020-04-27T20:59:03Z)
 	sequenceNumber=osmosis_replication_sequence_number (Ex 2595)
 $ nano /var/www/geosm/<name of database of project>/up-to-date/configuration.txt (le fichier existe déja normalement, il a été crée par la première commande avec osmosis)
-    baseUrl=osmosis_replication_base_url (EX http://download.geofabrik.de/europe/france-updates)
+    baseUrl=osmosis_replication_base_url (EX http://download.geofabrik.de/africa/cameroon-updates)
     maxInterval=jours en secondes ( Pour une semaine : 7 * 24 * 3600 = 604800)
 $ mkdir /var/www/geosm/<name of database of project>/up-to-date
 $ mkdir /var/www/geosm/<name of database of project>/up-to-date/keepup-cron-logs/
 $ chmod +x /var/www/geosm/<name of database of project>/up-to-date/update_osm_db.sh
-$ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of database of project>/up-to-date/update_osm_db.sh > /var/www/geosm/france/up-to-date/keepup-cron-logs/keepup-cron.log 2>&1
+$ cron tous les 5 jours à minuit : 0 0 */5 * *  /var/www/geosm/<name of database of project>/up-to-date/update_osm_db.sh > /var/www/geosm/cameroon/up-to-date/keepup-cron-logs/keepup-cron.log 2>&1
 
 ```
 
@@ -155,6 +155,6 @@ GEOSM is what it is because of some crazy people, company and free and open sour
 
 - SOGEFI CAMEROUN ([Website](http://sogefi.cm)): firstly, for the initial code system of the administrative panel, and for the beautiful design of the frontend
 - Thanks to KARL TAYOU for his contribution to the development of this project
-- OpenStreetMap ([OSM](http://osm.org))
+- OpenStreetMap ([OSM](http://openstreetmap.org))
 - Openlayers ([Website](http://openlayers.com))
 - QGIS SERVER ([Website](https://docs.qgis.org/3.4/en/docs/training_manual/qgis_server/index.html))

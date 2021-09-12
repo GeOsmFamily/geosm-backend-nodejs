@@ -14,6 +14,13 @@
     "nom_instance_docker": "cameroun",
     "nom_image_docker": "geosm",
     "port_backend": "",
-    "port_frontend": ""
+    "port_frontend": "",
+    "apikey": "apikey",
+    "authdomain": "authdomain",
+    "projectid": "projectid",
+    "storagebucket": "storagebucket",
+    "messagingsenderid": "messagingsenderid",
+    "appid": "appid",
+    "measurementid": "measurementid"
 
 }

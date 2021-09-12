@@ -28,6 +28,16 @@ echo $nom_instance
 sed -i "s/nomInstance/${nom_instance^^}/g" environment.prod.ts
 sed -i "s/langue/$lang/g" environment.prod.ts
 
+echo "====== Configuration de Firebase ======"
+sed -i "s/apikey/$apikey/g" environment.prod.ts
+sed -i "s/authdomain/$authdomain/g" environment.prod.ts
+sed -i "s/projectid/$projectid/g" environment.prod.ts
+sed -i "s/storagebucket/$storagebucket/g" environment.prod.ts
+sed -i "s/messagingsenderid/$messagingsenderid/g" environment.prod.ts
+sed -i "s/appid/$appid/g" environment.prod.ts
+sed -i "s/measurementid/$measurementid/g" environment.prod.ts
+
+
 echo "====== Code ISO du pays ======"
 #read new_country_code
 sed -i "s+code_country+$country_code+g" environment.prod.ts

@@ -83,6 +83,15 @@ echo $nom_instance
 sed -i "s/nomInstance/${nom_instance^^}/g" environment.prod.ts
 sed -i "s/langue/$lang/g" environment.prod.ts
 
+echo "====== Configuration de Firebase ======"
+sed -i "s/apikey/$apikey/g" environment.prod.ts
+sed -i "s/authdomain/$authdomain/g" environment.prod.ts
+sed -i "s/projectid/$projectid/g" environment.prod.ts
+sed -i "s/storagebucket/$storagebucket/g" environment.prod.ts
+sed -i "s/messagingsenderid/$messagingsenderid/g" environment.prod.ts
+sed -i "s/appid/$appid/g" environment.prod.ts
+sed -i "s/measurementid/$measurementid/g" environment.prod.ts
+
 echo "====== Code ISO du pays ======"
 #read new_country_code
 sed -i "s+code_country+$country_code+g" environment.prod.ts
@@ -116,14 +125,10 @@ chmod -R 777 $path_projet/docker
 cd $path_projet/docker
 docker-compose down
 docker-compose up -d
-docker  exec -i -t "${new_nom_container}"   /var/www/boot.sh
+docker  exec -i -t "${new_nom_container}"   /var/www/boot_update.sh
 
 echo "====== Deploiement Terminé ======"
 
-#echo "====== Suppression des fichiers QGS ======"
-#cd /var/www/geosm/$db/
-#rm -r *.qgs
-#cd $path_projet/docker
 
 echo "====== Configuration d'apache ======"
 
@@ -161,8 +166,6 @@ echo "======Installation du SSL ======="
 sudo certbot --apache -d ${new_url_frontend,,} -d ${new_url_backend,,} --redirect
 echo "======Installation du SSL Terminée ======="
 
-echo "========== Mise à jour de la BD ==========="
-curl https://api.geo.sm/api/v1/${nom_instance,,}/updateosm
 
 echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}

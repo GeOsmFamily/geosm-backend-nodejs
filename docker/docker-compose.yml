@@ -23,6 +23,7 @@ services:
       - ./php/php.ini:/etc/php/7.4/cli/conf.d/30local.ini
       - ./vhost-apache/:/etc/apache2/sites-available/
       - ./boot.sh:/var/www/boot.sh
+      - ./boot_update.sh:/var/www/boot_update.sh
 
     environment:
       DEFAULT_ROOT: "/"

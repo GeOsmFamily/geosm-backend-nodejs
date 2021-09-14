@@ -13,6 +13,13 @@
     "nom_instance_docker": "cameroun",
     "nom_image_docker": "geosm",
     "port_backend": "",
-    "port_frontend": ""
+    "port_frontend": "",
+    "apikey": "AIzaSyDx7czPOMOzGyI-lVd2UY2ZluD5OCWum2k",
+    "authdomain": "geosm-321710.firebaseapp.com",
+    "projectid": "geosm-321710",
+    "storagebucket": "geosm-321710.appspot.com",
+    "messagingsenderid": "511171084445",
+    "appid": "1:511171084445:web:926a30cb0d67b2c9531474",
+    "measurementid": "G-BBSK7EWFNT"
 
 }

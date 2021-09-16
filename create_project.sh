@@ -20,6 +20,10 @@ if [ $lang == 'en' ]
     then 
         pg_restore -U postgres -d $db  ./BD/template_en_bd.backup --verbose
         echo "template english"
+elif [ $lang == 'es' ]
+    then
+        pg_restore -U postgres -d $db  ./BD/template_es_bd.backup --verbose
+        echo "template espagnol"
 elif [ $lang == 'ville' ]
     then
         pg_restore -U postgres -d $db  ./BD/template_ville_bd.backup --verbose

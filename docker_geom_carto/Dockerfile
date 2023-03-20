@@ -18,6 +18,10 @@ RUN apt-get install apt-transport-https lsb-release ca-certificates
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
+RUN gpg --fingerprint 46B5721DBBD2996A
+
+RUN gpg --export --armor 46B5721DBBD2996A | apt-key add -
+
 RUN apt-get update
 
 RUN apt-get update && apt-get install -y \

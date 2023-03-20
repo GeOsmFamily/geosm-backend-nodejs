@@ -15,13 +15,13 @@ $ docker run -p 8080:8080 \
        -e QGSRV_LOGGING_LEVEL=DEBUG  \
        -e QGSRV_CACHE_ROOTDIR=/projects \
        -e QGSRV_CACHE_SIZE=10 \
-       3liz/qgis-map-server:3.20
+       3liz/qgis-map-server:3.24
 ```
 
 # Node js 14
 
 ```sh
-$ curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 ```
 
 # PostgreSQL & Postgis
@@ -31,7 +31,7 @@ $ RELEASE=$(lsb_release -cs)
 $ echo "deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}"-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list
 $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 $ sudo apt-get update
-$ sudo apt-get -y install postgresql-11 postgresql-client-11 postgresql-11-postgis-3
+$ sudo apt-get -y install postgresql-14 postgresql-client-14 postgresql-14-postgis-3
 ```
 
 changer le mot de passe et donner les droits d'accès TCP à la BD

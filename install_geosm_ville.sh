@@ -17,8 +17,8 @@ echo "====== Création du projet Terminée ======"
 
 echo "====== Configuration du Fichier environement ======"
 cd $path_projet/docker/client/environments
-new_url_backend="admin${db}.geo.sm"
-new_url_frontend="${db}.geo.sm"
+new_url_backend="admin${db}.geosm.org"
+new_url_frontend="${db}.geosm.org"
 echo $new_url_backend
 sed -i "s+url_backend+https://$new_url_backend+g" environment.prod.ts
 sed -i "s+urlFrontend+https://$new_url_frontend+g" environment.prod.ts
@@ -116,7 +116,7 @@ sudo certbot --apache -d ${new_url_frontend,,} -d ${new_url_backend,,} --redirec
 echo "======Installation du SSL Terminée ======="
 
 echo "========== Mise à jour de la BD ==========="
-curl https://api.geo.sm/api/v1/${nom_instance,,}/updateosm
+curl https://api.geosm.org/api/v1/${nom_instance,,}/updateosm
 
 echo "========= SUPPRESSION DU SHAPEFILE ========="
 rm -r /var/www/backend_nodejs/shp/${db}

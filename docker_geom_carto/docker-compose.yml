@@ -15,4 +15,4 @@ services:
       - ./boot_qgis_server.sh:/home/keopx/boot_qgis_server.sh
       - ./service.conf:/etc/apache2/sites-available/service.conf
     ports:
-      - "9090:80"
+      - "6060:80"

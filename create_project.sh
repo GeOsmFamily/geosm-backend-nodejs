@@ -29,7 +29,7 @@ elif [ $lang == 'ville' ]
         pg_restore -U postgres -d $db  ./BD/template_ville_bd.backup --verbose
         echo "template ville"
 else
-        pg_restore -U postgres -d $db  ./BD/template_bd.backup --verbose
+        pg_restore -U postgres -d $db  ./BD/template_fr_bd.backup --verbose
         echo "template french"
 fi
 wget $path_pbf -O osm.pbf
@@ -63,7 +63,7 @@ psql -d $db -c "TRUNCATE temp_table;"
 
 echo "====== IMPORT DE LA ZONE D'INTERET TERMINE ======"
 
-echo "====== CREATION DES REPERTOIRE POUR QGIS SERVEUR (GPKG,STYLE) ======"
+echo "====== CREATION DES REPERTOIRES POUR QGIS SERVEUR (GPKG,STYLE) ======"
 
 mkdir -m 777 -p $geosm_dir$db/gpkg/
 mkdir -m 777 -p $geosm_dir$db/style/

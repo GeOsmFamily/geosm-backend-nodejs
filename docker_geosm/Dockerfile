@@ -2,18 +2,6 @@ FROM keopx/apache-php:7.4
 # Set working directory
 WORKDIR /var/www
 
-RUN wget -O - http://qgis.org/downloads/qgis-2020.gpg.key | gpg --import
-
-RUN apt-get install apt-transport-https lsb-release ca-certificates
-
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-
-RUN gpg --fingerprint F7E06F06199EF2F2
-
-RUN apt-get update
-
-RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
-
 RUN apt-get update
 
 RUN apt-get update && apt-get install -y \
@@ -37,12 +25,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 
 RUN rm -rf /var/www/GeoOSM_Backend/ || true
 RUN git clone -b v8 https://github.com/GeOsmFamily/geosm-backend.git ./GeoOSM_Backend
 RUN cd /var/www/GeoOSM_Backend && composer install
-
 
 
 RUN rm -rf /var/www/GeoOSM_Frontend/ || true

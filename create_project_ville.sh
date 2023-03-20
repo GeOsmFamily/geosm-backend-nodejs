@@ -29,7 +29,7 @@ elif [ $lang == 'ville' ]
         pg_restore -U postgres -d $db  ./BD/template_ville_bd.backup --verbose
         echo "template ville"
 else
-        pg_restore -U postgres -d $db  ./BD/template_bd.backup --verbose
+        pg_restore -U postgres -d $db  ./BD/template_fr_bd.backup --verbose
         echo "template french"
 fi
 wget $path_pbf -O osm.pbf
@@ -69,7 +69,7 @@ mkdir -m 777 -p $geosm_dir$db/gpkg/
 mkdir -m 777 -p $geosm_dir$db/style/
 mkdir -m 777 -p $geosm_dir/style/
 
-echo "====== CREATION DES REPERTOIRE POUR QGIS SERVEUR TERMINE ======"
+echo "====== CREATION DES REPERTOIRES POUR QGIS SERVEUR TERMINE ======"
 
 echo "====== TELECHARGEMENT DES STYLES PAR DEFAUT DE GEOSM ======"
 

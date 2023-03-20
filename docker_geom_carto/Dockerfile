@@ -12,15 +12,15 @@ RUN apt-add-repository --remove 'deb https://qgis.org/debian buster main'
 
 RUN apt-add-repository 'deb https://qgis.org/debian buster main'
 
-RUN wget -O - http://qgis.org/downloads/qgis-2020.gpg.key | gpg --import
+RUN wget -O - http://qgis.org/downloads/qgis-2021.gpg.key | gpg --import
 
 RUN apt-get install apt-transport-https lsb-release ca-certificates
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
-RUN gpg --fingerprint F7E06F06199EF2F2
+RUN gpg --fingerprint D155B8E6A419C5BE
 
-RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
+RUN gpg --export --armor D155B8E6A419C5BE | apt-key add -
 
 RUN apt-get update
 
